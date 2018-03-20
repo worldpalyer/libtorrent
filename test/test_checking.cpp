@@ -332,11 +332,10 @@ TORRENT_TEST(discrete_checking)
 		p.save_path = ".";
 		p.ti = ti;
 		torrent_handle tor1 = ses1.add_torrent(p, ec);
-		TEST_CHECK(wait_for_alert(ses1, torrent_finished_alert::alert_type, "checking file 0"));
+		// change the priority of a file while checking and make sure it doesn't interrupt the checking.
 		std::vector<int> prio(ti->num_files(), 0);
 		prio[2] = 1;
 		tor1.prioritize_files(prio);
-		TEST_CHECK(wait_for_alert(ses1, torrent_finished_alert::alert_type, "checking file 1"));
 		TEST_CHECK(wait_for_alert(ses1, torrent_checked_alert::alert_type, "torrent checked"));
 		TEST_CHECK(tor1.status(0).is_seeding);
 	}

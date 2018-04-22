@@ -28,3 +28,7 @@ AM_CPPFLAGS = -ftemplate-depth-50 -I$(top_srcdir)/include @DEBUGFLAGS@
 AM_LDFLAGS = @BOOST_SYSTEM_LIB@
 #AM_LDFLAGS = $(LDFLAGS) @BOOST_SYSTEM_LIB@ @OPENSSL_LDFLAGS@ @OPENSSL_LIBS@
 #AM_LDFLAGS = @OPENSSL_LDFLAGS@
+
+if IS_DARWIN
+AM_LDFLAGS += -framework CoreFoundation -framework SystemConfiguration
+endif

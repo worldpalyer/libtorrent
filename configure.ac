@@ -494,7 +494,7 @@ AM_CONDITIONAL([ENABLE_PYTHON_BINDING], [test "x$ARG_ENABLE_PYTHON_BINDING" = "x
 
 AM_CONDITIONAL([WITH_OPENSSL], [test "x$ARG_ENABLE_ENCRYPTION" = "xyes" -o "x$ARG_ENABLE_ENCRYPTION" = "xon" ])
 
-
+AM_CONDITIONAL(IS_DARWIN, test `uname` = "Darwin")
 ###############################################################################
 # Other useful stuff
 ###############################################################################
